@@ -1,8 +1,8 @@
 package com.airline.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,13 +19,9 @@ public class AddPassenger extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 		
-		response.setContentType("text/html");
-		
-		out.println("<body><html>");
-		out.println("<h2>Welcome to World Adventures Airlines</h2>");
-		out.println("</body></html>");
+		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
