@@ -52,11 +52,11 @@ public class AddPassenger extends HttpServlet {
 		System.out.println("Gender: " + gender);
 
 		String dob_raw = request.getParameter("dob");
-		
+
 		String patternStr = "^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
 		Pattern pattern = Pattern.compile(patternStr);
 		Matcher matcher = pattern.matcher(dob_raw);
-		
+
 		if (matcher.find()) {
 			String dobArray[] = dob_raw.split("\\/");
 
@@ -72,12 +72,14 @@ public class AddPassenger extends HttpServlet {
 
 			Date dob = cal.getTime();
 			System.out.println("D.O.B: " + dob);
-		}
-		else
+		} else {
 			System.out.println("Invalid Date!");
-		
-		if ((Boolean)request.getAttribute("errors") == true) {
-			
+			request.setAttribute("errors", true);
+			request.setAttribute("date_error", true);
+		}
+
+		if ((Boolean) request.getAttribute("errors") == true) {
+
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 			view.forward(request, response);
 		}

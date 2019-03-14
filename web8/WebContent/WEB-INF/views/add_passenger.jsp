@@ -12,6 +12,26 @@
 
 <body>
     <div class="container">
+    
+    	<% if (request.getAttribute("errors") != null) { %>
+    		<fieldset>
+    			<legend>Errors</legend>
+    			<ul>
+    			
+    			<% if (request.getAttribute("firstname_error") != null) { %>
+    				<li class="error">Firstname Error</li>
+    			<% } %>
+    			
+    			<% if (request.getAttribute("lastname_error") != null) { %>
+    				<li class="error">Lastname Error</li>
+    			<% } %>
+    			
+    			<% if (request.getAttribute("date_error") != null) { %>
+    				<li class="error">Invalid Date Error</li>
+    			<% } %>
+    			</ul>
+    		</fieldset>
+    	<% } %>
         <div class="title">Add Passenger</div>
         <fieldset>
             <legend>Passenger Details</legend>
