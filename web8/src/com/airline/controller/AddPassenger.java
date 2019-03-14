@@ -31,6 +31,8 @@ public class AddPassenger extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setAttribute("errors", false);
 
 		String firstname = request.getParameter("firstname");
 		if (firstname.isEmpty()) {
@@ -78,7 +80,7 @@ public class AddPassenger extends HttpServlet {
 			request.setAttribute("date_error", true);
 		}
 
-		if ((Boolean) request.getAttribute("errors") == true) {
+		if ((Boolean)request.getAttribute("errors")) {
 
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 			view.forward(request, response);
