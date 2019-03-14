@@ -75,6 +75,12 @@ public class AddPassenger extends HttpServlet {
 		}
 		else
 			System.out.println("Invalid Date!");
+		
+		if ((Boolean)request.getAttribute("errors") == true) {
+			
+			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
+			view.forward(request, response);
+		}
 	}
 
 }
