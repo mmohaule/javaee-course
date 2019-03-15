@@ -1,0 +1,30 @@
+body{
+	padding : 0px;
+	margin : 0px;
+	background-color : white;
+	text-align : center;
+}
+
+.container{
+	margin : 0xp; 
+	padding : 10px;
+	border : 0xp solid black;
+	border-radius : 20px; 
+	background-color : #F7D4C1;
+	position : ralative;
+	text-align : center;
+}
+
+.title {
+	font-family : Times New Roman;
+	font-size : 36px;
+	color : #581845;
+	padding : 30px;
+	margin : 0px;
+	font-weight : normal;
+	}
+	
+.inputfield{
+	padding : 10px;
+	margin : 0xp; 
+}
