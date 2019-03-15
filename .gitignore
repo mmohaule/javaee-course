@@ -5,3 +5,4 @@ RemoteSystemsTempFiles/
 web*/.*
 web*/WebContent/WEB-INF/classes/
 web*/bin/
+ejb1EAR/
