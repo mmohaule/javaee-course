@@ -59,11 +59,13 @@
 				</div>
 				<div class="inputfield">
 					<label for="lastname" class="inpulabel">Last Name: </label> <input
-						name="lastname" type="text"></input>
+						name="lastname" type="text"
+						value="<%=request.getAttribute("lastname")%>"></input>
 				</div>
 				<div class="inputfield">
 					<label for="dob" class="inpulabel">Date of Birth: </label> <input
-						name="dob" type="text"></input>
+						name="dob" type="text"
+						value="<%=request.getAttribute("dob")%>"></input>
 				</div>
 				<div class="inputfield">
 					<label for="gender" class="inpulabel">Gender: </label> <select

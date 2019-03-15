@@ -1,7 +1,6 @@
 package com.airline.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +28,10 @@ public class AddPassenger extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		request.setAttribute("firstname", "");
+		request.setAttribute("lastname", "");
+		request.setAttribute("dob", "");
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 
 		view.forward(request, response);
@@ -51,16 +53,23 @@ public class AddPassenger extends HttpServlet {
 			System.out.println("Error: Empty firstname");
 			request.setAttribute("errors", true);
 			request.setAttribute("firstname_error", true);
-		} else
+			request.setAttribute("firstname", "");
+			
+		} else {
+			request.setAttribute("firstname", firstname);
 			System.out.println("Firstname: " + firstname);
+		}
 
 		lastname = request.getParameter("lastname");
 		if (lastname.isEmpty()) {
 			System.out.println("Error: Empty lastname");
 			request.setAttribute("errors", true);
 			request.setAttribute("lastname_error", true);
-		} else
+			request.setAttribute("Lastname", "");
+		} else {
+			request.setAttribute("lastname", lastname);
 			System.out.println("Lastname: " + lastname);
+		}
 
 		gender = request.getParameter("gender");
 		System.out.println("Gender: " + gender);
@@ -83,6 +92,7 @@ public class AddPassenger extends HttpServlet {
 			cal.set(Calendar.YEAR, Integer.parseInt(year));
 			cal.set(Calendar.MONTH, Integer.parseInt(month) - 1);
 			cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+			request.setAttribute("dob", dob_raw);
 
 			dob = cal.getTime();
 			System.out.println("D.O.B: " + dob);
@@ -90,6 +100,7 @@ public class AddPassenger extends HttpServlet {
 			System.out.println("Invalid Date!");
 			request.setAttribute("errors", true);
 			request.setAttribute("date_error", true);
+			request.setAttribute("dob", "");
 		}
 
 		if ((Boolean) request.getAttribute("errors")) {
