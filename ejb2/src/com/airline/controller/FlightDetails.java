@@ -32,6 +32,9 @@ public class FlightDetails extends HttpServlet {
 		out.println("<h3>Flight Details</h3>");
 		out.println("<p>To	: " + flightService.getTo() + "</p>");
 		out.println("<p>From: " + flightService.getFrom() + "</p>");
+		out.println("<p>Price: R" + flightService.getPrice() + "</p>");
+		out.println("<p>Seats: " + flightService.getNumOfSeats()+ "</p>");
+		out.println("<p>Airplane Model: " + flightService.getAirplaneModel() + "</p>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

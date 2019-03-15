@@ -2,7 +2,7 @@
 RemoteSystemsTempFiles/
 .recommenders/
 .classpath
-web*/.*
-web*/WebContent/WEB-INF/classes/
-web*/bin/
+ejb*/.*
+ejb*/WebContent/WEB-INF/classes/
+ejb*/bin/
 ejb1EAR/
