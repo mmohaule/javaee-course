@@ -3,3 +3,5 @@ RemoteSystemsTempFiles/
 .recommenders/
 .classpath
 web*/.*
+web*/WebContent/WEB-INF/classes/
+web*/bin/
