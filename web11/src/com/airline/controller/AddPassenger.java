@@ -37,14 +37,13 @@ public class AddPassenger extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		Passenger passenger = new Passenger();
 		String firstname;
 		String lastname;
 		String gender;
 		Date dob = null;
-		
-		
+
 		request.setAttribute("errors", false);
 
 		firstname = request.getParameter("firstname");
@@ -65,7 +64,6 @@ public class AddPassenger extends HttpServlet {
 
 		gender = request.getParameter("gender");
 		System.out.println("Gender: " + gender);
-		
 
 		String dob_raw = request.getParameter("dob");
 
@@ -94,7 +92,7 @@ public class AddPassenger extends HttpServlet {
 			request.setAttribute("date_error", true);
 		}
 
-		if ((Boolean)request.getAttribute("errors")) {
+		if ((Boolean) request.getAttribute("errors")) {
 
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 			view.forward(request, response);
@@ -104,15 +102,17 @@ public class AddPassenger extends HttpServlet {
 			passenger.setGender(Gender.valueOf(gender));
 			passenger.setDob(dob);
 			System.out.println(passenger);
-			
+
 			ServletContext sc = this.getServletContext();
-			
-			@SuppressWarnings("unchecked")
-			List<Passenger> passengers = (List<Passenger>) sc.getAttribute("passengers");
-			passengers.add(passenger);
-			
-			System.out.println("Passenger list: " + passengers);
-			
+
+			synchronized (this) {
+				@SuppressWarnings("unchecked")
+				List<Passenger> passengers = (List<Passenger>) sc.getAttribute("passengers");
+				passengers.add(passenger);
+
+				System.out.println("Passenger list: " + passengers);
+			}
+
 			response.sendRedirect("");
 		}
 	}
