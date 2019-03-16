@@ -33,7 +33,7 @@ public class FlightDetails extends HttpServlet {
 
 		response.setContentType("text/html");
 
-		out.println("<h3>Flight Details (via EJB interface)</h3>");
+		out.println("<h3>Flight Details (via Local Interface)</h3>");
 
 		out.println("<p>To	: " + fs.getTo() + "</p>");
 		out.println("<p>From	: " + fs.getFrom() + "</p>");
